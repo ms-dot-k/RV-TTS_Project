@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.88.1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href=""https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+	<link rel="stylesheet" href="css/custom.css">
+	<link rel="stylesheet" href="css/normalize.css">
+
+	<title>Multimodal TTS</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+
+<body data-new-gr-c-s-check-loaded="14.1091.0" data-gr-ext-installed="">
+
+<div class="container" >
+<header role="banner">
+</header>
+<main role="main">
+<article itemscope itemtype="https://schema.org/BlogPosting">
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<div class="text-center">
+        <h3>Multimodal TTS</h3>
+
+        <p class="mb-0" style="font-size: 1.1em;">
+        <br>
+		  Minsu Kim, Pingchuan Ma, Honglie Chen, Stavros Petridis, Maja Pantic <br><br>
+		<a href="https://arxiv.org/abs/">[Paper]</a> <a href="https://github.com/ms-dot-k">[Code]</a>
+        </p>	
+	<p style="vertical-align: middle; text-align: center; margin-bottom: 80px;"><img src="pics/overview.png" width="650"></p>
+	</div>
+</div>
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h4 id="samples" style="text-align: center;"> Comparisons with Previous Methods on LRS3 </h4>
+	<p> [1] Lee, Jiyoung, Joon Son Chung, and Soo-Whan Chung. "Imaginary voice: Face-styled diffusion model for text-to-speech." ICASSP. IEEE, 2023. <br>
+		[2] Lee, Minyoung, Eunil Park, and Sungeun Hong. "Fvtts: Face based voice synthesis for text-to-speech." Interspeech 2024, 4953-4957. </p>
+	<div class="table-responsive">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th style="text-align: center">Input Face</th>
+					<th style="text-align: center">FaceTTS [1]</th>
+					<th style="text-align: center">FVTTS [2]</th>
+					<th style="text-align: center">Ours</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td rowspan="2"; style="vertical-align: middle; text-align: center"><img src="data/LRS3/Input_Face/test_0iIh5YYDR2o_00001.jpg" style="min-width: 240px;"/></td>
+					<td colspan="3"; style="vertical-align: middle; text-align: center"> I'M NOT A SOCIAL PROBLEM GUY </td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/LRS3/FaceTTS/test_0iIh5YYDR2o_00001.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/LRS3/FVTTS/test_0iIh5YYDR2o_00001.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/LRS3/RV-TTS/test_0iIh5YYDR2o_00001.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+
+				<tr>
+					<td rowspan="2"; style="vertical-align: middle; text-align: center"><img src="data/LRS3/Input_Face/test_5b5BDoddOLA_00004.jpg" style="min-width: 240px;"/></td>
+					<td colspan="3"; style="vertical-align: middle; text-align: center"> AND THE WAY TO DO IT IS THROUGH THE BLOODSTREAM </td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/LRS3/FaceTTS/test_5b5BDoddOLA_00004.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/LRS3/FVTTS/test_5b5BDoddOLA_00004.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/LRS3/RV-TTS/test_5b5BDoddOLA_00004.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+
+				<tr>x
+					<td rowspan="2"; style="vertical-align: middle; text-align: center"><img src="data/LRS3/Input_Face/test_H14bBuluwB8_00002.jpg" style="min-width: 240px;"/></td>
+					<td colspan="3"; style="vertical-align: middle; text-align: center"> THAT'S THE WORK THAT STANDS BEFORE US </td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/LRS3/FaceTTS/test_H14bBuluwB8_00002.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/LRS3/FVTTS/test_H14bBuluwB8_00002.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/LRS3/RV-TTS/test_H14bBuluwB8_00002.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+
+				<tr>
+					<td rowspan="2"; style="vertical-align: middle; text-align: center"><img src="data/LRS3/Input_Face/test_HiwJ0hNl1Fw_00003.jpg" style="min-width: 240px;"/></td>
+					<td colspan="3"; style="vertical-align: middle; text-align: center"> I WAS TERRIFIED </td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/LRS3/FaceTTS/test_HiwJ0hNl1Fw_00003.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/LRS3/FVTTS/test_HiwJ0hNl1Fw_00003.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/LRS3/RV-TTS/test_HiwJ0hNl1Fw_00003.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+
+				<tr>
+					<td rowspan="2"; style="vertical-align: middle; text-align: center"><img src="data/LRS3/Input_Face/test_jggHw5PdQV0_00002.jpg" style="min-width: 240px;"/></td>
+					<td colspan="3"; style="vertical-align: middle; text-align: center"> AND WHO DOES THAT BENEFIT </td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/LRS3/FaceTTS/test_jggHw5PdQV0_00002.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/LRS3/FVTTS/test_jggHw5PdQV0_00002.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/LRS3/RV-TTS/test_jggHw5PdQV0_00002.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+
+				<tr>
+					<td rowspan="2"; style="vertical-align: middle; text-align: center"><img src="data/LRS3/Input_Face/test_k2hQL9Zrokk_00006.jpg" style="min-width: 240px;"/></td>
+					<td colspan="3"; style="vertical-align: middle; text-align: center"> I HAVE TO REPORT IT </td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/LRS3/FaceTTS/test_k2hQL9Zrokk_00006.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/LRS3/FVTTS/test_k2hQL9Zrokk_00006.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/LRS3/RV-TTS/test_k2hQL9Zrokk_00006.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+
+				<tr>
+					<td rowspan="2"; style="vertical-align: middle; text-align: center"><img src="data/LRS3/Input_Face/test_sxnlvwprfSc_00007.jpg" style="min-width: 240px;"/></td>
+					<td colspan="3"; style="vertical-align: middle; text-align: center"> THIS IS WHEN I WAS IN TEXAS </td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/LRS3/FaceTTS/test_sxnlvwprfSc_00007.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/LRS3/FVTTS/test_sxnlvwprfSc_00007.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/LRS3/RV-TTS/test_sxnlvwprfSc_00007.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+
+				<tr>
+					<td rowspan="2"; style="vertical-align: middle; text-align: center"><img src="data/LRS3/Input_Face/test_ZnCSUBmeRxw_00001.jpg" style="min-width: 240px;"/></td>
+					<td colspan="3"; style="vertical-align: middle; text-align: center"> BUT THINGS HAVE CHANGED </td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/LRS3/FaceTTS/test_ZnCSUBmeRxw_00001.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/LRS3/FVTTS/test_ZnCSUBmeRxw_00001.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/LRS3/RV-TTS/test_ZnCSUBmeRxw_00001.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br>
+</div>
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h4 id="samples" style="text-align: center;"> Comparisons with Previous Methods on Artistic Portraits </h4>
+	<div class="table-responsive">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th style="text-align: center">Input Face</th>
+					<th style="text-align: center">FaceTTS [1]</th>
+					<th style="text-align: center">FVTTS [2]</th>
+					<th style="text-align: center">Ours</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td rowspan="2"; style="vertical-align: middle; text-align: center"><img src="data/Artistic_Portraits/Input_Face/Abraham_Lincoln_6.jpg" style="min-width: 240px;"/></td>
+					<td colspan="3"; style="vertical-align: middle; text-align: center"> Our prime purpose in this life is to help others. And if you can't help them, at least don't hurt them. </td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/FaceTTS/Abraham_Lincoln_6.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/FVTTS/Abraham_Lincoln_6.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/RV-TTS/Abraham_Lincoln_6.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+
+				<tr>
+					<td rowspan="2"; style="vertical-align: middle; text-align: center"><img src="data/Artistic_Portraits/Input_Face/Adele_Bloch-Bauer_(detail_of_face)_10.jpg" style="min-width: 240px;"/></td>
+					<td colspan="3"; style="vertical-align: middle; text-align: center"> Remember your dreams and fight for them. You must know what you want from life. There is just one thing that makes your dream become impossible: the fear of failure. </td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/FaceTTS/Adele_Bloch-Bauer_(detail_of_face)_10.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/FVTTS/Adele_Bloch-Bauer_(detail_of_face)_10.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/RV-TTS/Adele_Bloch-Bauer_(detail_of_face)_10.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+
+				<tr>
+					<td rowspan="2"; style="vertical-align: middle; text-align: center"><img src="data/Artistic_Portraits/Input_Face/Albert_Einstein_1.jpg" style="min-width: 240px;"/></td>
+					<td colspan="3"; style="vertical-align: middle; text-align: center"> Life is not a problem to be solved, but a reality to be experienced. </td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/FaceTTS/Albert_Einstein_1.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/FVTTS/Albert_Einstein_1.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/RV-TTS/Albert_Einstein_1.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+
+				<tr>
+					<td rowspan="2"; style="vertical-align: middle; text-align: center"><img src="data/Artistic_Portraits/Input_Face/Alexander_Graham_Bell_(cropped_3-4)_11.jpg" style="min-width: 240px;"/></td>
+					<td colspan="3"; style="vertical-align: middle; text-align: center"> In three words I can sum up everything I've learned about life: it goes on. </td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/FaceTTS/Alexander_Graham_Bell_(cropped_3-4)_11.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/FVTTS/Alexander_Graham_Bell_(cropped_3-4)_11.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/RV-TTS/Alexander_Graham_Bell_(cropped_3-4)_11.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+
+				<tr>
+					<td rowspan="2"; style="vertical-align: middle; text-align: center"><img src="data/Artistic_Portraits/Input_Face/Gaius_Iulius_Caesar_(Vatican_Museum)_crop_13.jpg" style="min-width: 240px;"/></td>
+					<td colspan="3"; style="vertical-align: middle; text-align: center"> Transformation is a process, and as life happens there are tons of ups and downs. It's a journey of discovery, there are moments on mountaintops and moments in deep valleys of despair. </td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/FaceTTS/Gaius_Iulius_Caesar_(Vatican_Museum)_crop_13.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/FVTTS/Gaius_Iulius_Caesar_(Vatican_Museum)_crop_13.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/RV-TTS/Gaius_Iulius_Caesar_(Vatican_Museum)_crop_13.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+
+				<tr>
+					<td rowspan="2"; style="vertical-align: middle; text-align: center"><img src="data/Artistic_Portraits/Input_Face/Johannes_Vermeer_(1632-1675)_-_The_Girl_With_The_Pearl_Earring_(1665)_14.jpg" style="min-width: 240px;"/></td>
+					<td colspan="3"; style="vertical-align: middle; text-align: center"> Life is not about how fast you run or how high you climb, but how well you bounce. </td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/FaceTTS/Johannes_Vermeer_(1632-1675)_-_The_Girl_With_The_Pearl_Earring_(1665)_14.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/FVTTS/Johannes_Vermeer_(1632-1675)_-_The_Girl_With_The_Pearl_Earring_(1665)_14.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/RV-TTS/Johannes_Vermeer_(1632-1675)_-_The_Girl_With_The_Pearl_Earring_(1665)_14.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+
+				<tr>
+					<td rowspan="2"; style="vertical-align: middle; text-align: center"><img src="data/Artistic_Portraits/Input_Face/Madam_CJ_Walker_6.jpg" style="min-width: 240px;"/></td>
+					<td colspan="3"; style="vertical-align: middle; text-align: center"> Our prime purpose in this life is to help others. And if you can't help them, at least don't hurt them. </td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/FaceTTS/Madam_CJ_Walker_6.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/FVTTS/Madam_CJ_Walker_6.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/RV-TTS/Madam_CJ_Walker_6.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+
+				<tr>
+					<td rowspan="2"; style="vertical-align: middle; text-align: center"><img src="data/Artistic_Portraits/Input_Face/Mona_Lisa_13.jpg" style="min-width: 240px;"/></td>
+					<td colspan="3"; style="vertical-align: middle; text-align: center"> Transformation is a process, and as life happens there are tons of ups and downs. It's a journey of discovery, there are moments on mountaintops and moments in deep valleys of despair. </td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/FaceTTS/Mona_Lisa_13.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/FVTTS/Mona_Lisa_13.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/RV-TTS/Mona_Lisa_13.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+
+				<tr>
+					<td rowspan="2"; style="vertical-align: middle; text-align: center"><img src="data/Artistic_Portraits/Input_Face/Self-portrait_in_a_Straw_Hat_by_Elisabeth-Louise_Vigée-Lebrun_3.jpg" style="min-width: 240px;"/></td>
+					<td colspan="3"; style="vertical-align: middle; text-align: center"> Life is ten percent what happens to you and ninety percent how you respond to it. </td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/FaceTTS/Self-portrait_in_a_Straw_Hat_by_Elisabeth-Louise_Vigée-Lebrun_3.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/FVTTS/Self-portrait_in_a_Straw_Hat_by_Elisabeth-Louise_Vigée-Lebrun_3.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/RV-TTS/Self-portrait_in_a_Straw_Hat_by_Elisabeth-Louise_Vigée-Lebrun_3.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+
+				<tr>
+					<td rowspan="2"; style="vertical-align: middle; text-align: center"><img src="data/Artistic_Portraits/Input_Face/Tesla_circa_1890_crop_5.jpg" style="min-width: 240px;"/></td>
+					<td colspan="3"; style="vertical-align: middle; text-align: center"> Life isn't about finding yourself. Life is about creating yourself. </td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/FaceTTS/Tesla_circa_1890_crop_5.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/FVTTS/Tesla_circa_1890_crop_5.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/RV-TTS/Tesla_circa_1890_crop_5.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+
+				<tr>
+					<td rowspan="2"; style="vertical-align: middle; text-align: center"><img src="data/Artistic_Portraits/Input_Face/Thomas_Edison_9.jpg" style="min-width: 240px;"/></td>
+					<td colspan="3"; style="vertical-align: middle; text-align: center"> Literature adds to reality, it does not simply describe it. It enriches the necessary competencies that daily life requires and provides; and in this respect, it irrigates the deserts that our lives have already become. </td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/FaceTTS/Thomas_Edison_9.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/FVTTS/Thomas_Edison_9.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/RV-TTS/Thomas_Edison_9.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+
+				<tr>
+					<td rowspan="2"; style="vertical-align: middle; text-align: center"><img src="data/Artistic_Portraits/Input_Face/Vincent_van_Gogh_13.jpg" style="min-width: 240px;"/></td>
+					<td colspan="3"; style="vertical-align: middle; text-align: center"> Transformation is a process, and as life happens there are tons of ups and downs. It's a journey of discovery, there are moments on mountaintops and moments in deep valleys of despair. </td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/FaceTTS/Vincent_van_Gogh_13.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/FVTTS/Vincent_van_Gogh_13.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Artistic_Portraits/RV-TTS/Vincent_van_Gogh_13.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br>
+</div>
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h4 id="samples" style="text-align: center;"> Consistent Voice Generation </h4>
+	<div class="table-responsive">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th style="text-align: center">Input Face</th>
+					<th style="text-align: center">Prediction 1</th>
+					<th style="text-align: center">Prediction 2</th>
+					<th style="text-align: center">Prediction 3</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"><img src="data/Consistent/eZj5n8ScTkI/00001.jpg" style="min-width: 240px;"/></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Consistent/eZj5n8ScTkI/00001.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Consistent/eZj5n8ScTkI/00002.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Consistent/eZj5n8ScTkI/00005.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"><img src="data/Consistent/fIICVeGW4RY/00001.jpg" style="min-width: 240px;"/></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Consistent/fIICVeGW4RY/00001.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Consistent/fIICVeGW4RY/00003.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Consistent/fIICVeGW4RY/00004.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"><img src="data/Consistent/HUM2rCIUdeI/00001.jpg" style="min-width: 240px;"/></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Consistent/HUM2rCIUdeI/00001.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Consistent/HUM2rCIUdeI/00003.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Consistent/HUM2rCIUdeI/00004.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"><img src="data/Consistent/Li4S1yyrsTI/00007.jpg" style="min-width: 240px;"/></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Consistent/Li4S1yyrsTI/00007.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Consistent/Li4S1yyrsTI/00009.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Consistent/Li4S1yyrsTI/00022.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"><img src="data/Consistent/QeIrdqU0o9s/00002.jpg" style="min-width: 240px;"/></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Consistent/QeIrdqU0o9s/00002.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Consistent/QeIrdqU0o9s/00004.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Consistent/QeIrdqU0o9s/00006.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"><img src="data/Consistent/Sew0bn8mGAA/00002.jpg" style="min-width: 240px;"/></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Consistent/Sew0bn8mGAA/00002.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Consistent/Sew0bn8mGAA/00006.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Consistent/Sew0bn8mGAA/00009.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br>
+</div>
+
+<div class="container pt-5 mt-5 shadow-lg p-5 mb-5 bg-white rounded">
+	<h4 id="samples" style="text-align: center;"> By using different words in descriptive text </h4>
+	<div class="table-responsive">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th style="text-align: center">Normal</th>
+					<th style="text-align: center">Slow</th>
+					<th style="text-align: center">Fast</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Samples/Normal/0VJqrlH9cdl_00002.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Samples/Slow/4AYE3w5TWHs_00005.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Samples/Fast/1PNX6MSdVsk_00005.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th style="text-align: center">Noisy</th>
+					<th style="text-align: center">Animated</th>
+					<th style="text-align: center">Distant</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Samples/Noisy/4ErEBkjS3PY_00001.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Samples/Animated/9kBKQS7J7xl_00002.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+					<td style="vertical-align: middle; text-align: center"> <audio controls="controls" style="width: 260px;"><source src="data/Samples/Distant/1bnzVjOJ6NM_00007.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br>
+</div>
+
+</article>
+</main>
+</div>
+
+</body>
+</html>
